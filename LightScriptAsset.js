@@ -8,8 +8,8 @@ module.exports = class LightScriptAsset extends JSAsset {
       ? options.plugins.concat('lightscript')
       : ['lightscript']
 
-    this.contents = babylon.parse(code, options);
+    this.contents = babylon.parse(code, options)
 
-    return super.parse(this.contents)
+    return this.contents
   }
 }
