@@ -1,15 +1,24 @@
 const JSAsset = require('parcel-bundler/src/assets/JSAsset')
-const babylon = require('babylon-lightscript')
+const localRequire = require('parcel-bundler/src/utils/localRequire')
 
 module.exports = class LightScriptAsset extends JSAsset {
-  async parse (code) {
+  async getParserOptions () {
     const options = await super.getParserOptions()
+
     options.plugins = options.plugins
-      ? options.plugins.concat('lightscript')
+      ? ['lightscript', ...options.plugins]
       : ['lightscript']
 
-    this.contents = babylon.parse(code, options)
+    return options
+  }
 
-    return this.contents
+  async parse (code) {
+    const babylon = localRequire('babylon-lightscript', this.name)
+
+    const options = await this.getParserOptions()
+
+    this.ast = babylon.parse(code, options)
+
+    return this.ast
   }
 }
