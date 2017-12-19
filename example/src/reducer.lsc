@@ -1,0 +1,7 @@
+export default reducer (state, action) ->
+  if action.type == '+':
+    state + 1
+  elif action.type == '-':
+    state - 1
+  else:
+    state

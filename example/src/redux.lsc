@@ -1,0 +1,20 @@
+export createStore (reducer) ->
+  subscriptions = new Set()
+  let state = 0
+
+  store = {
+    subscribe (fn) -> {
+      subscriptions.add(fn)
+      return () -> subscriptions.delete(fn)
+    }
+    dispatch (action) -> {
+      now state = reducer(state, action)
+      subscriptions.forEach(eval.call.bind(eval.call))
+      return action
+    }
+    getState () -> state
+  }
+
+  store.dispatch({type: '@@redux/INIT'})
+
+  return store

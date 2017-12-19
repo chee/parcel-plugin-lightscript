@@ -1,0 +1,29 @@
+import {createStore} from './redux'
+import reducer from './reducer'
+
+store = createStore(reducer)
+
+store.subscribe(() -> console.log(store.getState()))
+
+store.subscribe(() ->
+  document.getElementById('root').textContent = store.getState()
+)
+
+increment () -> ({type: '+'})
+decrement () -> ({type: '-'})
+
+store.dispatch(increment())
+store.dispatch(increment())
+store.dispatch(increment())
+store.dispatch(increment())
+store.dispatch(decrement())
+store.dispatch(decrement())
+store.dispatch(decrement())
+store.dispatch(decrement())
+store.dispatch(decrement())
+store.dispatch(decrement())
+store.dispatch(decrement())
+
+
+window.onclick = () => store.dispatch(increment())
+window.onkeypress = () => store.dispatch(decrement())
