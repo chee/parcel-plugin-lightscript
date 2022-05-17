@@ -11,7 +11,7 @@
   "dependencies": {
     "babel-plugin-lightscript": "^0.5.9",
     "babel-preset-lightscript": "^0.5.9",
-    "node-sass": "^4.7.2",
+    "node-sass": "^7.0.0",
     "parcel-bundler": "^1.2.1",
     "parcel-plugin-lightscript": "^0.0.6"
   }
