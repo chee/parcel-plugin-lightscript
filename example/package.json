@@ -3,7 +3,7 @@
   "version": "0.0.5",
   "main": "index.js",
   "license": "MIT",
-  "author": "chee <chee@snake.dog>",
+  "author": "chee <yay@chee.party>",
   "scripts": {
     "start": "parcel index.html -p 2323",
     "build": "parcel build index.html"
